@@ -1,0 +1,62 @@
+# ==============================================================================
+#  JetBrains IDEs (Android Studio, IntelliJ)
+# ==============================================================================
+# User-specific configuration files
+.idea/
+*.iml
+
+# ==============================================================================
+#  Gradle
+# ==============================================================================
+# Gradle cache
+.gradle/
+# Build folder (contains generated code, APKs, bundles, etc.)
+build/
+
+# ==============================================================================
+#  Local Configuration
+# ==============================================================================
+# Local configuration file (contains SDK path and other sensitive local info)
+local.properties
+
+# ==============================================================================
+#  Build Artifacts & Output
+# ==============================================================================
+# Android Package files
+*.apk
+*.aab
+*.ap_
+*.aar
+
+# ==============================================================================
+#  Profiling and Debugging
+# ==============================================================================
+# Android Profiler captures
+captures/
+# Heap dump files
+*.hprof
+
+# ==============================================================================
+#  Keystore Files (SECURITY)
+# ==============================================================================
+# Signing key files used to sign your app.
+# NEVER commit these to version control.
+*.jks
+*.keystore
+
+# ==============================================================================
+#  Google Services
+# ==============================================================================
+# Google Services file can contain API keys. It's often better to manage this
+# through CI/CD environment variables or a secure vault.
+# If you are the sole developer, you might choose to commit it, but it's
+# best practice to ignore it in public repositories.
+google-services.json
+
+# ==============================================================================
+#  Operating System Files
+# ==============================================================================
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
