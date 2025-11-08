@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Minimal Material 3 based theme to satisfy manifest reference -->
+    <style name="Theme.Experiment4" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary/secondary colors are defaults; customize if desired -->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
