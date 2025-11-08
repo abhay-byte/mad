@@ -44,12 +44,12 @@ For every single task I give you, you must follow this exact cycle. This is the 
     ```
 *   **Purpose:** This step is a crucial quality gate. It ensures your code has no syntax errors and the project can be successfully built before you proceed. If the build fails, you must fix the errors before moving to the next step.
 
-**Step 4: Run and Verify on a Device (The Functional Check)**
+**Step 4: Run and Verify on a Device (Mandatory)**
 *   After a successful compilation, deploy and run the application.
-*   You can do this either by using the "Run" button in Android Studio or by using ADB commands from the terminal.
+*   You have to run the apk build by using ADB commands from the terminal.
 *   **Purpose:** This step is for functional verification. You must interact with the app on an Android emulator or a physical device to confirm that the changes you made work exactly as intended and have not introduced any visual or logical bugs.
 
-**Step 5: Commit the Changes (The Logging Step)**
+**Step 5: Commit the Changes and push (The Logging Step)**
 *   Once the change has been compiled and functionally verified, you must commit it to the Git repository.
 *   Your commit messages must be descriptive and follow the conventional commit format (`type(scope): message`).
     *   **`feat`**: for a new feature.
@@ -61,6 +61,119 @@ For every single task I give you, you must follow this exact cycle. This is the 
     *   `git commit -m "feat(exp2): Create initial HomeScreen and DetailsScreen Composables"`
     *   `git commit -m "fix(exp4): Handle null response from user API endpoint"`
     *   `git commit -m "refactor(exp3): Abstract database operations into a repository"`
+    *   `git push origin main`
+    
 
 **Step 6: Repeat the Cycle**
 *   After a successful commit, await my next instruction for the current experiment. You will continue this **Implement -> Compile -> Run -> Commit** loop until all tasks for the given experiment are completed. Then, and only then, will we move to the next experiment.
+
+#### **5. Workflow Management: Updating These Instructions**
+
+To maintain flexibility, we may need to update these operational instructions. When a change to our workflow or guidelines is required, you will use the following command and process:
+
+1.  **Initiate the Update:** Start your prompt with the exact phrase **"UPDATE INSTRUCTIONS:"**.
+2.  **Provide the New Content:** Immediately following the command, provide the full, complete text for the section that needs to be changed or added.
+3.  **Confirmation:** I will acknowledge the update and will operate under the new instructions from that point forward.
+
+**Example Scenario:**
+
+*   **Your Prompt:**
+    > **UPDATE INSTRUCTIONS:**
+    >
+    > Let's modify the commit message format. All commit messages must now be prefixed with the experiment number, like this: `git commit -m "exp-4: Implement API data fetching"`
+
+*   **My Response:**
+    > Acknowledged. The instructions for commit messages have been updated. I will now use the "exp-X:" prefix for all future commits.
+
+#### **6. Environment and Version Control: The `project_configuration.md` Mandate**
+
+To prevent build errors and ensure absolute consistency across all projects, you **must** strictly adhere to the versions specified in the `project_configuration.md` file.
+
+*   **Single Source of Truth:** This file is the definitive guide for all SDK, Gradle, and library versions. Do not use any other version unless explicitly instructed to via an **UPDATE INSTRUCTIONS** command.
+*   **Project Setup:** When creating a new project for an experiment, your first step after project generation is to verify and align all versions in your `build.gradle.kts` files and `gradle-wrapper.properties` with what is documented in `project_configuration.md`.
+*   **No Deviation:** Any deviation from these versions is considered a failure to follow instructions and must be corrected immediately. This rule is in place to minimize "it works on my machine" issues and streamline the development process.
+
+
+#### **7. Experiment Completion: The Summary `README.md`**
+
+Upon the successful completion of all tasks for a given experiment, you must perform one final action before awaiting the instruction to begin the next experiment: **generate a summary README file.**
+
+This file serves as a consolidated report of the key code written during the experiment, making it easy to review and document the most important logic.
+
+**Workflow:**
+
+1.  **Final Task:** After the final feature of an experiment is implemented, verified, and committed, this becomes your next and last task for that experiment.
+2.  **Create the File:** Create a new file named `README.md` inside the root directory of the completed experiment's folder (e.g., `/experiment_1/README.md`).
+3.  **Populate the Content:** The `README.md` must contain a summary of the most important code you wrote. For each significant file you created or modified, you must follow this exact format:
+    *   A level-3 Markdown header (`###`) with the full path to the file from the module root (e.g., `app/src/main/java/com/example/experiment1/MainActivity.kt`).
+    *   A Markdown code block using triple backticks and the `kotlin` language identifier.
+    *   Inside the code block, paste **only the main, relevant code** from that file.
+
+**What is "Main, Relevant Code"?**
+
+Your goal is to be concise. Exclude boilerplate like package declarations, and most imports. Focus on the core logic:
+
+*   **For UI files:** The primary `@Composable` functions.
+*   **For ViewModels:** The class definition, public state holders (`StateFlow`, `MutableState`), and public functions.
+*   **For Data Classes:** The complete class definition.
+*   **For Repositories/Services:** The interface or class definition, and its public methods.
+
+**Example `README.md` for a hypothetical Experiment 1:**
+
+````markdown
+# Experiment 1: "Hello World" with Jetpack Compose
+
+This README summarizes the key code written for this experiment.
+
+### `app/src/main/java/com/example/experiment1/ui/theme/Theme.kt`
+
+```kotlin
+private val DarkColorScheme = darkColorScheme(
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
+)
+```
+
+### `app/src/main/java/com/example/experiment1/MainActivity.kt`
+
+```kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            Experiment1Theme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    Experiment1Theme {
+        Greeting("Android")
+    }
+}
+```
