@@ -1,8 +1,16 @@
-# Experiment 2: Home and Details Navigation with Jetpack Compose
+# Experiment 2
 
-This README summarizes the key code written for this experiment.
+### Experiment No:
+2
 
-### `app/src/main/java/com/example/experiment2/HomeScreen.kt`
+### Aim:
+Create two Jetpack Compose screens (Home and Details) with navigation between them.
+
+---
+
+### Code:
+
+#### app/src/main/java/com/example/experiment2/HomeScreen.kt
 ```kotlin
 @Composable
 fun HomeScreen(onNavigateToDetails: () -> Unit) {
@@ -32,7 +40,7 @@ fun HomeScreen(onNavigateToDetails: () -> Unit) {
 }
 ```
 
-### `app/src/main/java/com/example/experiment2/DetailsScreen.kt`
+#### app/src/main/java/com/example/experiment2/DetailsScreen.kt
 ```kotlin
 @Composable
 fun DetailsScreen(onNavigateBack: () -> Unit) {
@@ -62,7 +70,7 @@ fun DetailsScreen(onNavigateBack: () -> Unit) {
 }
 ```
 
-### `app/src/main/java/com/example/experiment2/MainActivity.kt`
+#### app/src/main/java/com/example/experiment2/MainActivity.kt
 ```kotlin
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,20 +108,18 @@ class MainActivity : ComponentActivity() {
 }
 ```
 
-### `app/src/main/java/com/example/experiment2/ui/theme/Theme.kt`
+#### app/src/main/java/com/example/experiment2/ui/theme/Theme.kt
 ```kotlin
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
     tertiary = Pink80
 )
-
 private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
 )
-
 @Composable
 fun Experiment2Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -143,3 +149,13 @@ fun Experiment2Theme(
     )
 }
 ```
+
+---
+
+### Output:
+The app displays a Home screen with a button to navigate to Details. The Details screen has a button to go back. Both use Material 3 theming.
+
+---
+
+### Result:
+Home and Details screens with navigation were successfully implemented and verified.
