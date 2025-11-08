@@ -8,13 +8,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.ar.core.Config
 import io.github.sceneview.ar.ARScene
-import io.github.sceneview.ar.node.ArNode
-import io.github.sceneview.math.Position
 
 @Composable
-fun ARScreen(
-    viewModel: ARViewModel = hiltViewModel()
-) {
+fun ARScreen(viewModel: ARViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val arSceneView = remember { ARScene(context) }
 
@@ -22,18 +18,15 @@ fun ARScreen(
     LaunchedEffect(Unit) {
         arSceneView.configureSession { session ->
             session.configure(
-                session.config.apply {
-                    planeFindingMode = Config.PlaneFindingMode.HORIZONTAL
-                    lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
-                    updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE
-                }
+                    session.config.apply {
+                        planeFindingMode = Config.PlaneFindingMode.HORIZONTAL
+                        lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
+                        updateMode = Config.UpdateMode.LATEST_CAMERA_IMAGE
+                    }
             )
         }
     }
 
     // Main AR View
-    AndroidView(
-        factory = { arSceneView },
-        modifier = androidx.compose.ui.Modifier.fillMaxSize()
-    )
+    AndroidView(factory = { arSceneView }, modifier = androidx.compose.ui.Modifier.fillMaxSize())
 }
