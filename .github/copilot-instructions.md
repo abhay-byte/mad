@@ -49,7 +49,7 @@ For every single task I give you, you must follow this exact cycle. This is the 
 *   You have to run the apk build by using ADB commands from the terminal.
 *   **Purpose:** This step is for functional verification. You must interact with the app on an Android emulator or a physical device to confirm that the changes you made work exactly as intended and have not introduced any visual or logical bugs.
 
-**Step 5: Commit the Changes and push (The Logging Step)**
+**Step 5: git add . git commit and git push,the Changes(The Logging Step)**
 *   Once the change has been compiled and functionally verified, you must commit it to the Git repository.
 *   Your commit messages must be descriptive and follow the conventional commit format (`type(scope): message`).
     *   **`feat`**: for a new feature.
@@ -58,6 +58,7 @@ For every single task I give you, you must follow this exact cycle. This is the 
     *   **`style`**: for formatting changes, missing semicolons, etc.
     *   **`docs`**: for changes to documentation.
 *   **Example Commit Messages:**
+    *   `git add .`
     *   `git commit -m "feat(exp2): Create initial HomeScreen and DetailsScreen Composables"`
     *   `git commit -m "fix(exp4): Handle null response from user API endpoint"`
     *   `git commit -m "refactor(exp3): Abstract database operations into a repository"`
@@ -93,39 +94,55 @@ To prevent build errors and ensure absolute consistency across all projects, you
 *   **Project Setup:** When creating a new project for an experiment, your first step after project generation is to verify and align all versions in your `build.gradle.kts` files and `gradle-wrapper.properties` with what is documented in `project_configuration.md`.
 *   **No Deviation:** Any deviation from these versions is considered a failure to follow instructions and must be corrected immediately. This rule is in place to minimize "it works on my machine" issues and streamline the development process.
 
-
 #### **7. Experiment Completion: The Summary `README.md`**
 
 Upon the successful completion of all tasks for a given experiment, you must perform one final action before awaiting the instruction to begin the next experiment: **generate a summary README file.**
 
-This file serves as a consolidated report of the key code written during the experiment, making it easy to review and document the most important logic.
+This file serves as a consolidated report covering the experiment's aim, key code, and final outcome, making it easy to review and document the project's progress.
 
 **Workflow:**
 
 1.  **Final Task:** After the final feature of an experiment is implemented, verified, and committed, this becomes your next and last task for that experiment.
 2.  **Create the File:** Create a new file named `README.md` inside the root directory of the completed experiment's folder (e.g., `/experiment_1/README.md`).
-3.  **Populate the Content:** The `README.md` must contain a summary of the most important code you wrote. For each significant file you created or modified, you must follow this exact format:
-    *   A level-3 Markdown header (`###`) with the full path to the file from the module root (e.g., `app/src/main/java/com/example/experiment1/MainActivity.kt`).
-    *   A Markdown code block using triple backticks and the `kotlin` language identifier.
-    *   Inside the code block, paste **only the main, relevant code** from that file.
+3.  **Populate the Content:** The `README.md` must be structured with the following sections in this exact order:
+    *   **Experiment No:** The number of the experiment.
+    *   **Aim:** A clear, one-line statement describing the main objective of the experiment.
+    *   **Code:** A collection of the most important code snippets written.
+    *   **Output:** A textual description of the final application's state and appearance.
+    *   **Result:** A concluding statement confirming the successful completion of the aim.
+
+**Code Section Rules:**
+
+For each significant file you created or modified within the `Code` section, you must follow this exact format:
+*   A level-3 Markdown header (`###`) with the full path to the file from the module root (e.g., `app/src/main/java/com/example/experiment1/MainActivity.kt`).
+*   A Markdown code block using triple backticks and the `kotlin` language identifier.
+*   Inside the code block, paste **only the main, relevant code** from that file.
 
 **What is "Main, Relevant Code"?**
 
-Your goal is to be concise. Exclude boilerplate like package declarations, and most imports. Focus on the core logic:
+Your goal is to be concise. Exclude boilerplate like package declarations and most imports. Focus on the core logic:
 
 *   **For UI files:** The primary `@Composable` functions.
 *   **For ViewModels:** The class definition, public state holders (`StateFlow`, `MutableState`), and public functions.
 *   **For Data Classes:** The complete class definition.
-*   **For Repositories/Services:** The interface or class definition, and its public methods.
+*   **For Repositories/Services:** The interface or class definition and its public methods.
 
 **Example `README.md` for a hypothetical Experiment 1:**
 
-````markdown
-# Experiment 1: "Hello World" with Jetpack Compose
 
-This README summarizes the key code written for this experiment.
+# Experiment 1: Summary
 
-### `app/src/main/java/com/example/experiment1/ui/theme/Theme.kt`
+### **Experiment No:**
+1
+
+### **Aim:**
+To set up an Android development environment and create a basic "Hello World" application using Jetpack Compose.
+
+---
+
+### **Code:**
+
+#### `app/src/main/java/com/example/experiment1/ui/theme/Theme.kt`
 
 ```kotlin
 private val DarkColorScheme = darkColorScheme(
@@ -141,7 +158,7 @@ private val LightColorScheme = lightColorScheme(
 )
 ```
 
-### `app/src/main/java/com/example/experiment1/MainActivity.kt`
+#### `app/src/main/java/com/example/experiment1/MainActivity.kt`
 
 ```kotlin
 class MainActivity : ComponentActivity() {
@@ -149,7 +166,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Experiment1Theme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -165,7 +181,8 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier.padding(16.dp),
+        textAlign = TextAlign.Center
     )
 }
 
@@ -177,3 +194,15 @@ fun GreetingPreview() {
     }
 }
 ```
+
+---
+
+### **Output:**
+
+The final application, when run, displays a single screen with a white background. Centered on the screen is the text "Hello Android!".
+
+---
+
+### **Result:**
+
+Thus, the experiment to create a basic Jetpack Compose application and display a greeting was successfully completed.
