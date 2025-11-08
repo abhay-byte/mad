@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experiment4.data.repository.WeatherRepository
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.ui.window.PopupProperties
 
 @Composable
 fun WeatherApp(repository: WeatherRepository) {
@@ -26,6 +29,14 @@ fun WeatherApp(repository: WeatherRepository) {
 @Composable
 fun WeatherScreen(state: WeatherUiState, onFetch: (String) -> Unit) {
     var city by remember { mutableStateOf("") }
+    var expanded by remember { mutableStateOf(false) }
+
+    // Small local suggestion list; replace with Places API or remote autocomplete as needed.
+    val sampleCities = listOf(
+        "London", "New York", "San Francisco", "Paris", "Berlin", "Tokyo", "Delhi", "Mumbai",
+        "Sydney", "Moscow", "Beijing", "Cairo", "São Paulo"
+    )
+    val suggestions by remember(city) { mutableStateOf(sampleCities.filter { it.startsWith(city, ignoreCase = true) }.take(6)) }
 
     Scaffold(
         topBar = {
@@ -41,15 +52,34 @@ fun WeatherScreen(state: WeatherUiState, onFetch: (String) -> Unit) {
         ) {
             OutlinedTextField(
                 value = city,
-                onValueChange = { city = it },
+                onValueChange = {
+                    city = it
+                    expanded = it.isNotBlank() && suggestions.isNotEmpty()
+                },
                 label = { Text("City e.g. London") },
                 singleLine = true,
                 trailingIcon = {
-                    IconButton(onClick = { if (city.isNotBlank()) onFetch(city) }) {
+                    IconButton(onClick = { if (city.isNotBlank()) { expanded = false; onFetch(city) } }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
                     }
                 }
             )
+
+            // Simple Dropdown suggestions under the text field
+            // Prevent the dropdown from taking focus so the soft keyboard stays visible while typing.
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                properties = PopupProperties(focusable = false)
+            ) {
+                suggestions.forEach { suggestion ->
+                    DropdownMenuItem(text = { Text(suggestion) }, onClick = {
+                        city = suggestion
+                        expanded = false
+                        onFetch(suggestion)
+                    })
+                }
+            }
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -64,7 +94,15 @@ fun WeatherScreen(state: WeatherUiState, onFetch: (String) -> Unit) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text("${data.weather.firstOrNull()?.description ?: "-"}", style = MaterialTheme.typography.bodyLarge)
                 }
-                is WeatherUiState.Error -> Text("Error: ${(state as WeatherUiState.Error).message}")
+                is WeatherUiState.Error -> {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Error: ${(state as WeatherUiState.Error).message}")
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Button(onClick = { if (city.isNotBlank()) onFetch(city) }) {
+                            Text("Retry")
+                        }
+                    }
+                }
             }
         }
     }
