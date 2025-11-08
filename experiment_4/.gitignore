@@ -1,0 +1,15 @@
+# Local gradle and local.properties should never be committed
+local.properties
+# Keystores
+*.jks
+*.keystore
+# IntelliJ / Android Studio
+.idea/
+.gradle/
+/build/
+/captures/
+.externalNativeBuild
+
+# Ignore user-specific files
+*.iml
+
