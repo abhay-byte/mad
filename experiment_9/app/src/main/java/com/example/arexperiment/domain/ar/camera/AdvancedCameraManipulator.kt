@@ -58,7 +58,7 @@ class AdvancedCameraManipulator(
         manipulator.scroll(x, y, adjust)
     }
 
-    fun setLocked(locked: Bool) {
+    fun setLocked(locked: Boolean) {
         isLocked = locked
     }
 

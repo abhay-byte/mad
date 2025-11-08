@@ -89,13 +89,13 @@ graph TD
    - [x] Texture management
    - [x] Model optimization
 
-5. Advanced AR Features 🔄
+5. Advanced AR Features ✅
    - [x] Cloud Anchors for shared AR experiences
    - [x] Augmented Image tracking
    - [x] Point Cloud visualization
    - [x] Advanced camera manipulator
-   - [ ] HDR environment lighting
-   - [ ] glTF camera support
+   - [x] HDR environment lighting
+   - [x] glTF camera support
 
 ## Implementation Phases
 
@@ -143,6 +143,6 @@ graph TD
   - [x] Add confidence filtering
   - [x] Add point cloud management
 - [x] Camera and Environment
-  - [ ] Implement HDR environment mapping
-  - [ ] Add glTF camera support
+  - [x] Implement HDR environment mapping
+  - [x] Add glTF camera support
   - [x] Create advanced camera manipulator
