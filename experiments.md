@@ -37,11 +37,59 @@ This experiment introduces cross-platform development, allowing you to build app
 *   **React Native Development:** You will develop a simple mobile app using React Native, a popular framework from Meta. You will utilize its JavaScript/TypeScript and component-based structure to build a functional cross-platform application.
 *   **Flutter Development:** You will also create a mobile app using Flutter, Google's UI toolkit for building natively compiled applications. You will learn to implement various UI elements (widgets) and handle user input in the Dart programming language.
 
-### **Experiment 7: Testing and Debugging**
+# **Experiment 7: Testing and Debugging a Basic HackerNews App**
 
-This experiment focuses on the crucial practices of testing and debugging to ensure the quality, stability, and performance of your mobile applications.
+## **Objective**
+This experiment focuses on implementing, testing, and debugging a simple mobile application that fetches and displays data from the [HackerNews API](https://github.com/HackerNews/API?tab=readme-ov-file). The goal is to gain hands-on experience in applying testing frameworks, identifying bugs, and ensuring app stability through both unit and instrumental testing.
 
-*   **Android App Testing:** You will perform unit testing on key functionalities of an Android app using JUnit, a widely-used testing framework. You will also become familiar with Android's dedicated testing frameworks for writing and running instrumental tests on an emulator or physical device.
+---
+
+## **Scope**
+In this experiment, you will **build a basic HackerNews Android application** that retrieves and displays top stories from HackerNews. The app will include essential features such as data fetching from a public REST API, rendering news titles in a list, and navigating to detailed story views.
+
+Once the app is implemented, you will **perform systematic testing and debugging** using Android’s testing frameworks to ensure correct functionality and performance.
+
+---
+
+## **Key Activities**
+
+### **1. App Development**
+- Develop a **basic Android app** using **Kotlin** or **Java**.
+- Integrate the **HackerNews API** to fetch and display top stories.
+- Implement simple UI components such as a **RecyclerView** for the story list and an **Activity or Fragment** for detailed story content.
+- Handle basic error cases (e.g., no internet, failed API calls).
+
+### **2. Testing**
+- Perform **unit testing** using **JUnit** to validate data-handling logic and API response parsing.
+- Implement **instrumented tests** using **Espresso** to verify UI functionality on an emulator or physical device.
+- Use **mock data** to test UI behavior without requiring live API calls.
+
+### **3. Debugging**
+- Use **Android Studio’s debugging tools** (breakpoints, Logcat, etc.) to identify and fix runtime errors.
+- Analyze and resolve issues related to UI rendering, API integration, and app lifecycle.
+
+---
+
+## **Evaluation Criteria**
+- App correctly fetches and displays HackerNews stories.  
+- All implemented tests pass successfully.  
+- Bugs and issues are identified, documented, and resolved.
+
+---
+
+## **Deliverables**
+- A functional **basic HackerNews Android app**.  
+- A set of **unit and instrumented test cases**.  
+- A brief **report/documentation** summarizing the testing process, identified bugs, and debugging steps taken.
+
+---
+
+## **References**
+- [HackerNews API Documentation](https://github.com/HackerNews/API?tab=readme-ov-file)
+- [Android Testing Documentation](https://developer.android.com/training/testing)
+- [JUnit 4 User Guide](https://junit.org/junit4/)
+- [Espresso Testing Guide](https://developer.android.com/training/testing/espresso)
+
 
 ### **Experiment 8: App Deployment and Performance Optimization**
 
@@ -50,11 +98,69 @@ Once an app is built and tested, the next steps are to deploy it to users and en
 *   **Deployment to Google Play Store:** You will learn the process of packaging an Android app into an Android App Bundle (`.aab`) or APK (`.apk`), creating a production signing key, and deploying it to the Google Play Store for public distribution.
 *   **Performance Optimization:** You will focus on optimizing app performance by analyzing and improving resource usage. This includes using tools like the Android Profiler to detect memory leaks, reduce CPU usage, improve network efficiency, and ensure a responsive user experience.
 
-### **Experiment 9: Augmented Reality (AR) Integration**
+---
 
-This experiment explores the cutting-edge field of Augmented Reality, where digital information and objects are overlaid onto the real world through a device's camera.
+# **Experiment 9: Augmented Reality (AR) Integration**
 
-*   **ARCore for Android:** You will learn how to integrate AR features into an Android app using Google's ARCore platform. This will involve detecting surfaces, tracking motion, and placing 3D objects in the real-world environment as viewed through the device's camera.
+## **Objective**  
+This experiment explores the field of Augmented Reality (AR) by building a simple mobile application that either **places a virtual object into the real-world scene**, or **identifies a day-to-day object** using the camera. You will learn how to integrate AR features into an Android app (using ARCore) to detect surfaces, track motion, and overlay or recognise objects via the device’s camera.
+
+## **Scope**  
+In this experiment you will **build a basic AR Android application** with one of the following functionalities (you may choose one or implement both):
+
+- **Object Placement Mode**: The app detects a horizontal or vertical surface in the camera view, and allows the user to tap to place a virtual 3D object (e.g., a simple model) at that location.  
+- **Object Identification Mode**: The app uses the camera and AR capabilities to recognise a day-to-day real-world object (e.g., a chair, table, or a cup) and then overlays additional information or a virtual label on it.
+
+The focus is on integrating ARCore features for surface detection, anchor placement, motion tracking, and possibly basic object recognition/labeling.
+
+## **Key Activities**
+
+### 1. AR App Development  
+- Set up an Android app (in Kotlin or Java) using ARCore SDK.  
+- For Object Placement Mode: implement surface detection (plane detection), and upon tap place a 3D model anchored to the real world.  
+- For Object Identification Mode: integrate (or stub) a simple object-recognition mechanism (could be basic, e.g., pre-defined objects) and overlay a label or virtual object when the recognized real object is seen.  
+- Provide UI/UX instructions to the user (e.g., “Move device to detect surface”, “Tap to place object”, or “Point camera at object to identify”).  
+- Handle device permissions (camera, motion sensors) and AR session lifecycle.
+
+### 2. AR Testing & Debugging  
+- Test the app on a supported physical Android device (or emulator if supported).  
+- Validate that surface detection works, objects are placed and remain anchored when the user moves the device.  
+- In the identification mode, verify correct recognition (as implemented) and overlay behaviour.  
+- Use logging, ARCore session state checks, and debugging tools (e.g., in Android Studio: Logcat, breakpoints) to find and fix issues (e.g., anchor drifting, object mis-placement, recognition failures).  
+- Check for usability issues: too far/too close placement, objects placed in odd orientations, incorrect overlays.
+
+### 3. Evaluation Criteria  
+- The app successfully detects surfaces (placing mode) or identifies a real-world day-to-day object (identification mode).  
+- Virtual object is correctly anchored and remains stable during device movement (placement mode).  
+- Overlay/label appears correctly on recognised object (identification mode).  
+- UX flows are clear and user-friendly (instructions visible, appropriate feedback).  
+- Issues/bugs are documented and resolved.
+
+## **Deliverables**  
+- A functional **basic AR Android app** (either placement mode or identification mode, or both).  
+- Screenshots or short demo video of the app in action.  
+- A short **report/documentation** summarizing:  
+  * Implementation approach (which mode you chose)  
+  * Key AR features used (plane detection, anchors, recognition)  
+  * Testing done and bugs found + how you fixed them  
+  * Limitations and possible improvements.  
+- Repository link (e.g., GitHub) with your app source code and README.
+
+
+## **Reference Repository**  
+You may use the following publicly-available repository as a starting point and reference:  
+- ARCore Android SDK by Google — includes sample code for surface detection and object placement. (GitHub: [google-ar/arcore-android-sdk](https://github.com/google-ar/arcore-android-sdk)) :contentReference[oaicite:3]{index=3}  
+- Alternatively, use the library SceneView for Android which simplifies placing 3D/AR content using ARCore. (GitHub: [SceneView/sceneview-android](https://github.com/SceneView/sceneview-android)) :contentReference[oaicite:5]{index=5}
+
+
+## **References**  
+- [ARCore Quickstart for Android](https://developers.google.com/ar/develop/java/quickstart) :contentReference[oaicite:6]{index=6}  
+- [Content Placement Guidelines for AR](https://developers.google.com/ar/design/content/content-placement) :contentReference[oaicite:7]{index=7}  
+- GitHub sample projects for ARCore :contentReference[oaicite:8]{index=8}  
+
+---
+
+
 
 ### **Experiment 10: IoT Integration in Mobile Apps**
 

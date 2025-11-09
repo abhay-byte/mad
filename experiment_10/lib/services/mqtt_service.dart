@@ -24,7 +24,9 @@ class MQTTService {
   int _pongCount = 0;
   int _pingCount = 0;
 
-  MQTTService();
+  MQTTService() {
+    _connectionStateController.add(MQTTConnectionState.disconnected);
+  }
 
   Stream<MQTTConnectionState> get connectionState =>
       _connectionStateController.stream;
@@ -56,7 +58,12 @@ class MQTTService {
     _connectionStateController.add(MQTTConnectionState.connecting);
 
     try {
-      _client = MqttServerClient(_host!, _identifier!);
+      // Create a new client for each initialization
+      _client = MqttServerClient(
+        host,
+        _identifier!,
+        maxConnectionAttempts: 3,
+      );
 
       // Configure client settings
       if (useWebSocket) {

@@ -21,8 +21,24 @@ The entire project must be organized as follows. This structure is not a suggest
 
 *   **UI Development with Jetpack Compose:** All user interfaces, from the simplest "Hello World" screen to complex data displays, **must** be built using Jetpack Compose. You are explicitly forbidden from using Android XML layouts. The goal is to build proficiency in modern Android UI development.
 *   **Language:** All code must be written in Kotlin, following the best practices outlined in the guidelines.
+Of course. This is an excellent enhancement to the workflow. Adding a formal planning phase with a `TODO.md` will ensure we have a clear, structured approach before diving into code.
 
-#### **4. The Iterative Development and Version Control Workflow**
+#### **4. Experiment Planning: The `TODO.md` File**
+
+Before any code is written for a new experiment, we will establish a clear and structured plan. This is done by creating a `TODO.md` file within the experiment's root directory (e.g., `/experiment_2/TODO.md`). This file acts as our roadmap for the entire experiment.
+
+**Workflow for Planning:**
+
+1.  **Initiation:** When I instruct you to begin a new experiment, your very first task is to create this `TODO.md` file.
+2.  **Phase 1: System Architecture & Design:** The `TODO.md` will always begin with this phase. In this section, you will:
+    *   Define the core architecture to be used (e.g., MVVM - Model-View-ViewModel).
+    *   Create textual representations or Mermaid diagrams for **ERDs** (Entity-Relationship Diagrams), **Flowcharts**, and **DFDs** (Data Flow Diagrams) as needed to visualize data structures, user journeys, and data movement.
+    *   Define a list of all features to be implemented (e.g., user login, search functionality, location tracking, filter options). We will start with a basic feature set, and I will instruct you to add more complex features incrementally.
+3.  **Subsequent Phases:** Based on the features defined, you will outline the subsequent implementation phases (e.g., Phase 2: UI Scaffolding, Phase 3: ViewModel and Business Logic, Phase 4: Data Integration).
+4.  **Approval:** You will present this plan within the `TODO.md`. Once I approve it, you will proceed with the iterative development cycle, starting with the first task of the first phase.
+
+
+#### **4.1. The Iterative Development and Version Control Workflow**
 
 For every single task I give you, you must follow this exact cycle. This is the most critical part of the instructions.
 
@@ -67,6 +83,49 @@ For every single task I give you, you must follow this exact cycle. This is the 
 
 **Step 6: Repeat the Cycle**
 *   After a successful commit, await my next instruction for the current experiment. You will continue this **Implement -> Compile -> Run -> Commit** loop until all tasks for the given experiment are completed. Then, and only then, will we move to the next experiment.
+
+
+#### **4.2. The Phased Development and Version Control Workflow**
+
+Once the `TODO.md` for the experiment is approved, you will follow this phased workflow. Development is broken down into the "phases" defined in the plan. You will complete all tasks within a single phase, committing your work locally after each task. Only at the end of the entire phase will you build the project, test the APK, and push the collective changes.
+
+This approach ensures that each major stage of development is stable and verified.
+
+**Phase Workflow:**
+
+**Step 1: Await Phase Instruction**
+*   Do nothing until I provide a clear directive to begin a specific phase.
+*   **Example Directive:** "Proceed with all tasks in **Phase 2: UI Scaffolding** as outlined in the `TODO.md`."
+
+**Step 2: Implement and Commit Tasks Locally (The Inner Loop)**
+*   For the given phase, you will complete each task listed in the `TODO.md` one by one.
+*   For **each individual task** within the phase:
+    1.  **Implement the change** according to all guidelines in `code_guidelines.md`.
+    2.  **Stage and commit the change locally**. Use a descriptive, conventional commit message.
+        *   `git add .`
+        *   `git commit -m "feat(exp2): Implement HomeScreen UI"`
+    3.  **Do NOT push yet.** Proceed immediately to the next task in the current phase.
+
+**Step 3: Compile and Verify at the End of the Phase (The Phase Gate)**
+*   **After all tasks for the current phase are implemented and committed locally**, you must perform a full project build and on-device verification. This is a critical quality gate.
+*   **Compile the Project:** From the terminal, inside the specific experiment's root directory, run the following command to build the debug APK. This ensures all the code from the phase integrates and compiles successfully.
+    ```bash
+    ./gradlew assembleDebug
+    ```
+*   **Run via ADB:** After a successful build, install and launch the generated APK (`app/build/outputs/apk/debug/app-debug.apk`) using ADB commands.
+    1.  **Install/Update:** `adb install -r app/build/outputs/apk/debug/app-debug.apk`
+    2.  **Launch:** `adb shell am start -n com.example.experiment2/.MainActivity` (You must use the correct package name and main activity for the current project).
+*   **Verify Functionality:** Thoroughly interact with the application on an emulator or physical device to confirm that all features and changes from the completed phase work together correctly and as expected.
+
+**Step 4: Push the Completed Phase to Remote**
+*   Once the entire phase has been successfully built and verified on a device, push all the local commits you've made during the phase to the remote repository in a single action.
+*   **Command:**
+    ```bash
+    git push origin main
+    ```
+
+**Step 5: Repeat for the Next Phase**
+*   After a successful push, await my instruction to begin the next phase from the `TODO.md`. You will continue this **Phase -> [Implement -> Commit] -> Build -> Verify -> Push** cycle until all phases for the experiment are complete.
 
 #### **5. Workflow Management: Updating These Instructions**
 

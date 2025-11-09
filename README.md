@@ -24,6 +24,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Material Design 3
 - Kotlin Coroutines
 
+**Output:**
+| Basic UI Implementation |
+|:----------------------:|
+| ![First Screen](src/exp1/1.png) |
+
 ### Experiment 2: Flutter Widget Fundamentals
 ![Flutter](https://img.shields.io/badge/Framework-Flutter-blue)
 
@@ -33,6 +38,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Flutter Widgets
 - Provider State Management
 - Material Components
+
+**Output:**
+| Main Screen | Widget Demonstrations |
+|:-----------:|:-------------------:|
+| ![Main Screen](src/exp2/1.png) | ![Widget Demo](src/exp2/2.png) |
 
 ### Experiment 3: Database Integration
 ![SQLite](https://img.shields.io/badge/Database-SQLite-green)
@@ -45,6 +55,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Kotlin Flow
 - LiveData
 - Data Access Objects (DAO)
+
+**Output:**
+| Database Setup | CRUD Operations | Data Display | Query Results |
+|:-------------:|:--------------:|:------------:|:-------------:|
+| ![Database Operations](src/exp3/1.png) | ![CRUD Operations](src/exp3/2.png) | ![Data Display](src/exp3/3.png) | ![Query Results](src/exp3/4.png) |
 
 ### Experiment 4: Weather API Integration
 ![REST](https://img.shields.io/badge/API-REST-orange)
@@ -59,6 +74,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - API Integration
 - MVVM Architecture
 
+**Output:**
+| API Integration | Data Fetching | Response Display |
+|:--------------:|:-------------:|:----------------:|
+| ![API Integration](src/exp4/1.png) | ![Data Fetching](src/exp4/2.png) | ![Response Display](src/exp4/3.png) |
+
 ### Experiment 5: Location-Based Services
 ![Location](https://img.shields.io/badge/Service-Location-yellow)
 ![Maps](https://img.shields.io/badge/Integration-Maps-yellow)
@@ -70,6 +90,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Geolocation
 - Location Services
 - Permission Handling
+
+**Output:**
+| Maps Integration | Location Services |
+|:---------------:|:----------------:|
+| ![Maps Integration](src/exp5/1.png) | ![Location Services](src/exp5/2.png) |
 
 ### Experiment 6: Form Validation & State Management
 ![BLoC](https://img.shields.io/badge/State-BLoC-purple)
@@ -83,21 +108,50 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Reactive Programming
 - Stream Controllers
 
-### Experiment 7: News Application with Testing
-![Testing](https://img.shields.io/badge/Quality-Testing-red)
-![CI](https://img.shields.io/badge/Pipeline-CI-red)
+**Output:**
+| Form UI | Validation | State Management |
+|:-------:|:----------:|:----------------:|
+| ![Form UI](src/exp6/1.png) | ![Validation](src/exp6/2.png) | ![State Management](src/exp6/3.png) |
 
-**Objective:** Building a news app with comprehensive testing implementation.
+### Experiment 7: HackerNews Application with Testing
+![Testing](https://img.shields.io/badge/Quality-Testing-red)
+![API](https://img.shields.io/badge/API-HackerNews-orange)
+
+**Objective:** Building a HackerNews client with comprehensive testing implementation.
 
 **Key Technologies:**
-- Unit Testing
-- Integration Testing
+- Unit Testing with JUnit
+- Integration Testing with Espresso
 - Widget Testing
-- CI/CD Pipeline
-- News API Integration
+- Mock Testing
+- HackerNews API Integration
+- Error Handling
 
-### Experiment 8: Social Media Integration
-![OAuth](https://img.shields.io/badge/Auth-OAuth-brightgreen)
+**Output:**
+| News List | Story Details |
+|:---------:|:------------:|
+| ![HackerNews List](src/exp7/1.png) | ![Story Details](src/exp7/2.png) |
+
+### Experiment 8: App Deployment and Optimization
+![Deploy](https://img.shields.io/badge/Deploy-PlayStore-green)
+![Performance](https://img.shields.io/badge/Optimize-Performance-blue)
+
+**Objective:** Deploying the HackerNews application to Google Play Store and implementing performance optimizations.
+
+**Key Technologies:**
+- App Bundle Generation
+- ProGuard Configuration
+- Performance Profiling
+- Memory Leak Detection
+- Play Store Deployment
+- CI/CD Pipeline
+
+*Note: This experiment focuses on the deployment and optimization of the HackerNews application developed in Experiment 7.*
+
+**Output:**
+| App Bundle Generation | Performance Profiling |
+|:--------------------:|:--------------------:|
+| ![Bundle Generation](src/exp8/1.png) | ![Performance Analysis](src/exp8/2.png) |
 ![Social](https://img.shields.io/badge/Integration-Social-brightgreen)
 
 **Objective:** Implementing social media authentication and sharing features.
@@ -120,6 +174,11 @@ This repository contains 10 experiments covering different aspects of mobile app
 - 3D Model Rendering
 - Camera Integration
 
+**Output:**
+| AR Setup | Model Placement | AR Interaction | Scene View |
+|:--------:|:--------------:|:--------------:|:----------:|
+| ![AR Setup](src/exp9/1.png) | ![Model Placement](src/exp9/2.png) | ![Interaction](src/exp9/3.png) | ![AR View](src/exp9/4.png) |
+
 ### Experiment 10: IoT Dashboard
 ![IoT](https://img.shields.io/badge/Domain-IoT-lightgrey)
 ![MQTT](https://img.shields.io/badge/Protocol-MQTT-lightgrey)
@@ -131,6 +190,8 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Real-time Data
 - Charts and Graphs
 - Device Management
+
+
 
 ## 🛠 Technology Stack
 

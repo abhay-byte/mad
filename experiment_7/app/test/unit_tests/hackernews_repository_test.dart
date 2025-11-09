@@ -48,7 +48,7 @@ void main() {
 
     test('getStory returns Story object', () async {
       // Arrange
-      final int storyId = 1;
+      const int storyId = 1;
       final Map<String, dynamic> storyData = {
         'id': storyId,
         'title': 'Test Story',

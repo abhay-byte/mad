@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:provider/provider.dart';
 import 'package:experiment_7/presentation/screens/story_list_screen.dart';
 import 'package:experiment_7/presentation/viewmodels/home_viewmodel.dart';
 import 'package:experiment_7/domain/models/story.dart';
 import 'package:experiment_7/domain/repositories/hackernews_repository.dart';
 
-class MockHackerNewsRepository extends Mock implements HackerNewsRepository {}
+@GenerateMocks([HackerNewsRepository])
+void main() {
 
 void main() {
   late MockHackerNewsRepository mockRepository;

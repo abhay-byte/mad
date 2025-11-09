@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mockito/mockito.dart';
 import 'package:app/bloc/form/form_bloc.dart';
 import 'package:app/data/repositories/form_repository.dart';
-import 'package:app/presentation/screens/form_screen.dart';
 
 class TestApp extends StatelessWidget {
   final Widget child;

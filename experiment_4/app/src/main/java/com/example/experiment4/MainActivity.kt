@@ -10,6 +10,8 @@ import com.example.experiment4.data.network.WeatherService
 import com.example.experiment4.data.repository.WeatherRepository
 import com.example.experiment4.ui.theme.Experiment4Theme
 import com.example.experiment4.ui.weather.WeatherApp
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,15 +19,22 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Create OkHttpClient with logging
+        val loggingInterceptor =
+                HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+
+        val client = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+
         // Create Retrofit instance
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit =
+                Retrofit.Builder()
+                        .baseUrl("https://api.openweathermap.org/")
+                        .client(client)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
 
         val service = retrofit.create(WeatherService::class.java)
-    // Read API key injected at build time. Keep the key out of VCS by setting it in local.properties
-    val apiKey = BuildConfig.OPENWEATHER_API_KEY
+        val apiKey = BuildConfig.OPENWEATHER_API_KEY
         val repository = WeatherRepository(service, apiKey)
 
         setContent {
