@@ -50,10 +50,30 @@ cd C:\Users\abhay\temp\MAD\experiment_4
 
 After install, launch the app on a connected device or emulator. The app provides a text field where you can enter a city (e.g. "London") and press the search icon to fetch current weather.
 
-## Notes and next steps
-- This is a minimal, educational implementation. For production:
-  - Move the API key to a secure source (NDK, server or build-time injection not committed to VCS).
-  - Add error handling and retry logic.
-  - Add caching (Room or local storage) and offline support.
-  - Add unit tests for the repository and ViewModel.
+## Implementation Details
+
+### Latest Updates
+- Added OkHttp logging interceptor for better network debugging
+- Implemented proper API key injection from local.properties
+- Enhanced error handling with detailed network error messages
+- Fixed API key configuration in build.gradle.kts
+
+### Current Features
+- Retrofit integration with OpenWeatherMap API
+- OkHttp logging for network debugging
+- Proper error handling with detailed messages
+- Secure API key management through BuildConfig
+- MVVM architecture with ViewModel and Repository
+- Coroutines for asynchronous operations
+- StateFlow for reactive UI updates
+- Material3 theme implementation
+
+## Notes and Future Improvements
+- Consider adding:
+  - Caching with Room for offline support
+  - Unit tests for repository and ViewModel
+  - UI tests for Compose screens
+  - Location-based weather updates
+  - Weather forecasts
+  - More detailed weather information display
 
