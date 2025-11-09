@@ -191,6 +191,8 @@ This repository contains 10 experiments covering different aspects of mobile app
 - Charts and Graphs
 - Device Management
 
+**Output:**
+![home](src/exp10/1.jpg) 
 
 
 ## 🛠 Technology Stack
@@ -234,9 +236,9 @@ This repository contains 10 experiments covering different aspects of mobile app
     <td>Experiment 9</td>
   </tr>
   <tr>
-    <td><img src="screenshots/exp1.png" width="200"/></td>
-    <td><img src="screenshots/exp4.png" width="200"/></td>
-    <td><img src="screenshots/exp9.png" width="200"/></td>
+    <td><img src="src/exp1/1.png" width="200"/></td>
+    <td><img src="src/exp9/1.png" width="200"/></td>
+    <td><img src="src/exp4/1.png" width="200"/></td>
   </tr>
 </table>
 
